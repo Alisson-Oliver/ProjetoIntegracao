@@ -1,18 +1,21 @@
 public class Cartao {
     
+    private String tipoDoCartao; 
     private int id;
-    private String tipoDoCartao;
     private double valorPassagemInteira = 5.20;
     private double saldoNoCartao;
 
-
     boolean statusValido;
-    boolean statusBloqueio;
+    boolean statusBloqueado;
+
 
     public Cartao(int id, String tipoDoCartao){
 
         this.id = id;
         this.tipoDoCartao = tipoDoCartao;
+        this.statusBloqueado = true;
+        this.statusValido = true; 
+
     }
 
     public int getId() {
@@ -35,7 +38,7 @@ public class Cartao {
     }
 
     public void setStatusBloqueio(boolean statusBloqueio) {
-        this.statusBloqueio = statusBloqueio;
+        this.statusBloqueado = statusBloqueio;
     }
 
     public void setStatusValido(boolean statusValido) {
@@ -53,4 +56,7 @@ public class Cartao {
         System.out.println("Saldo atual: " + saldoNoCartao);
 
     }
+
+    
+   
 }

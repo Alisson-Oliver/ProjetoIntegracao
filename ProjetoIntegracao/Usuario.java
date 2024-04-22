@@ -3,6 +3,7 @@ public class Usuario {
     String nome;
     String cpf;
     String dataDeNascimento;
+    int quantidadeCartoes;
     Cartao[] cartoes = new Cartao[2]; 
 
 
@@ -32,5 +33,15 @@ public class Usuario {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public int getQuantidadeCartoes() {
+        return quantidadeCartoes;
+    }
+
+    public void addQuantidade(){
+
+        this.quantidadeCartoes++;
+
     }
 }
