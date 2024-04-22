@@ -53,13 +53,13 @@ public class CadastroUsuario {
   
 
 
-    System.out.println();
+        System.out.println();
 
-    Usuario adicionarUsuario = new Usuario();
-    adicionarUsuario.setNome(nomeDigitado);
-    adicionarUsuario.setCpf(cpfDigitado);
-    adicionarUsuario.setDataDeNascimento(nascimentoDigitada);
-    usuarios.add(adicionarUsuario);
+        Usuario adicionarUsuario = new Usuario();
+        adicionarUsuario.setNome(nomeDigitado);
+        adicionarUsuario.setCpf(cpfDigitado);
+        adicionarUsuario.setDataDeNascimento(nascimentoDigitada);
+        usuarios.add(adicionarUsuario);
 
 
     }

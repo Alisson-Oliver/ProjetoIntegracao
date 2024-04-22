@@ -19,12 +19,12 @@ public class Principal {
     ArrayList<Integer> idsCadastrados = new ArrayList<>();
 
     Usuario user1 = new Usuario();
-    user1.nome = "Ana Souza";
-    user1.cpf = "333.444.555-66";
-    user1.dataDeNascimento = "10/07/2005";
-    Cartao cartao = new Cartao(31324, "Meia Estudantil");
+    user1.setNome("Ana Souza");
+    user1.setCpf("333.444.555-66");
+    user1.setDataDeNascimento("10/07/2005");
+    Cartao cartao = new Cartao(31324, "Meia Passagem Estudantil");
     user1.cartoes[0] = cartao;
-    Cartao cartao2 = new Cartao(31554, "Meia Estudantil");
+    Cartao cartao2 = new Cartao(31554, "Bilhete Identificado");
     user1.cartoes[1] = cartao2;
     usuarios.add(user1);
     user1.addQuantidade();
@@ -33,15 +33,19 @@ public class Principal {
     
 
     Usuario user2 = new Usuario();
-    user2.nome = "Maria Silva";
-    user2.cpf = "555.666.777-88";
-    user2.dataDeNascimento = "05/09/1990";
+    user2.setNome("Maria Silva"); 
+    user2.setCpf("555.666.777-88");
+    user2.setDataDeNascimento("05/09/1990");
+    Cartao cartao3 = new Cartao(45324, "Meia Passagem Estudantil");
+    user2.cartoes[0] = cartao3;
     usuarios.add(user2);
 
     Usuario user3 = new Usuario();
-    user3.nome = "João Oliveira";
-    user3.cpf = "999.888.777-66";
-    user3.dataDeNascimento = "21/03/1985";
+    user3.setNome("João Oliveira");
+    user3.setCpf("999.888.777-66");
+    user3.setDataDeNascimento("21/03/1985");
+    Cartao cartao4 = new Cartao(93746, "Bilhete Identificado");
+    user3.cartoes[0] = cartao4;
     usuarios.add(user3);
 
 
@@ -103,6 +107,16 @@ public class Principal {
 
             System.out.println();
             System.out.println("Obrigado por utilizar o nosso serviço!");
+            System.out.println("[1] Muito Pessímo ");
+            System.out.println("[2] Pessímo");
+            System.out.println("[3] Bom");
+            System.out.println("[4] Ótimo");
+            System.out.println("[5] Excelente ");
+            System.out.println();
+            System.out.println("Avalie o nosso serviço: ");
+            entrada.nextLine();
+            entrada.nextLine();
+
             running = false;
             break;
 
@@ -113,7 +127,6 @@ public class Principal {
     }
 
     } while (running);
-
 
     }
 }

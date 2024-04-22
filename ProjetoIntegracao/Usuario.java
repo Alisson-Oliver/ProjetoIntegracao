@@ -1,16 +1,11 @@
 public class Usuario {
     
-    String nome;
-    String cpf;
-    String dataDeNascimento;
-    int quantidadeCartoes;
-    Cartao[] cartoes = new Cartao[2]; 
+    private String nome;
+    private String cpf;
+    private String dataDeNascimento;
+    private int quantidadeCartoes;
+    public Cartao[] cartoes = new Cartao[2] ;
 
-
-    public Cartao[] getCartoes() {
-        return cartoes;
-    }
-    
     public String getCpf() {
         return cpf;
     }
