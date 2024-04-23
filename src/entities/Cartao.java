@@ -1,6 +1,9 @@
+package entities;
+import entities.enums.TipoCartao;
+
 public class Cartao {
     
-    private String tipoDoCartao; 
+    private TipoCartao tipoDoCartao; 
     private int id;
     private double valorPassagemInteira = 5.20;
     private double saldoNoCartao;
@@ -8,14 +11,11 @@ public class Cartao {
     boolean statusValido;
     boolean statusBloqueado;
 
-
-    public Cartao(int id, String tipoDoCartao){
-
+    public Cartao(int id, TipoCartao tipoDoCartao){
         this.id = id;
         this.tipoDoCartao = tipoDoCartao;
         this.statusBloqueado = true;
         this.statusValido = true; 
-
     }
 
     public int getId() {
@@ -25,7 +25,7 @@ public class Cartao {
     public double getSaldoNoCartao() {
         return saldoNoCartao;
     }
-    public String getTipoDoCartao() {
+    public TipoCartao getTipoDoCartao() {
         return tipoDoCartao;
     }
 
@@ -50,17 +50,22 @@ public class Cartao {
     }
 
     public void recargaCartao(double valor){
-
         this.saldoNoCartao += valor;
         System.out.println("==============================");
         System.out.println("Seu cartão foi recarregado!");
         System.out.printf("Saldo atual: R$ %.2f%n",saldoNoCartao);
         System.out.println("==============================");
-       
-
-
     }
 
-    
-   
+    //Exibir o tipo do cartão de forma mais legível
+    public String getTipoDoCartaoDescricao(){
+        switch (tipoDoCartao) {
+            case MEIA_PASSAGEM_ESTUDANTIL:
+                return "Meia Passagem Estudantil";
+            case BILHETE_IDENTIFICADO:
+                return "Bilhete Único";
+            default:
+                return "Tipo do cartão não encontrado.";
+        }
+    }
 }

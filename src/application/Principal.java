@@ -1,6 +1,9 @@
+package application;
+
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import entities.*;
+import entities.enums.TipoCartao;
 
 public class Principal {
     public static void main(String[] args) {
@@ -8,46 +11,26 @@ public class Principal {
     final int CADASTROUSUARIO = 1;
     final int DADOSUSUARIO = 2;
     final int CADASTROCARTAO = 3;
-    final int RECARREGARCARTAO = 4;
-    final int BUSCARCARTAO = 5;
-    final int BLOCKUNBLOCK = 6;
+    final int DADOSCARTAO = 4;
+    final int RECARREGARCARTAO = 5;
+    final int BLOQUEAROUDESBLOQUEAR = 6;
     final int UTILIZARTRANSPORTE = 7;
     final int SAIR = 8;
 
     Scanner entrada = new Scanner(System.in);
-    ArrayList<Usuario> usuarios = new ArrayList<>();
-    ArrayList<Integer> idsCadastrados = new ArrayList<>();
+    ArrayList<Usuario> usuarios = new ArrayList<>(); 
 
-    Usuario user1 = new Usuario();
-    user1.setNome("Ana Souza");
-    user1.setCpf("333.444.555-66");
-    user1.setDataDeNascimento("10/07/2005");
-    Cartao cartao = new Cartao(31324, "Meia Passagem Estudantil");
-    user1.cartoes[0] = cartao;
-    Cartao cartao2 = new Cartao(31554, "Bilhete Identificado");
-    user1.cartoes[1] = cartao2;
-    usuarios.add(user1);
-    user1.addQuantidade();
-    user1.addQuantidade();
-
+    Usuario userteste = new Usuario();
     
+    userteste.setNome("Alisson Alves");
+    userteste.setCpf("11122233344");
+    userteste.setDataDeNascimento("14/01/2005");
 
-    Usuario user2 = new Usuario();
-    user2.setNome("Maria Silva"); 
-    user2.setCpf("555.666.777-88");
-    user2.setDataDeNascimento("05/09/1990");
-    Cartao cartao3 = new Cartao(45324, "Meia Passagem Estudantil");
-    user2.cartoes[0] = cartao3;
-    usuarios.add(user2);
+    Cartao cartao = new Cartao(12873, TipoCartao.MEIA_PASSAGEM_ESTUDANTIL);
+    userteste.setCartao(cartao, 0);
 
-    Usuario user3 = new Usuario();
-    user3.setNome("João Oliveira");
-    user3.setCpf("999.888.777-66");
-    user3.setDataDeNascimento("21/03/1985");
-    Cartao cartao4 = new Cartao(93746, "Bilhete Identificado");
-    user3.cartoes[0] = cartao4;
-    usuarios.add(user3);
-
+    usuarios.add(userteste);
+   
 
     boolean running = true;
 
@@ -56,11 +39,11 @@ public class Principal {
 
     System.out.println("========== Integração - Transporte Público ==========");
     System.out.printf("[%d] Cadastrar Usuário %n", CADASTROUSUARIO);
-    System.out.printf("[%d] Informações do usuário %n", DADOSUSUARIO);
+    System.out.printf("[%d] Consultar informações do usuário %n", DADOSUSUARIO);
     System.out.printf("[%d] Cadastrar cartão %n", CADASTROCARTAO);
+    System.out.printf("[%d] Consultar informações do cartão %n", DADOSCARTAO);
     System.out.printf("[%d] Recarga cartão %n", RECARREGARCARTAO);
-    System.out.printf("[%d] Buscar cartão %n", BUSCARCARTAO);
-    System.out.printf("[%d] Bloquear/Desbloquear cartão %n", BLOCKUNBLOCK);
+    System.out.printf("[%d] Bloquear/Desbloquear cartão %n", BLOQUEAROUDESBLOQUEAR);
     System.out.printf("[%d] Utilizar Transporte %n", UTILIZARTRANSPORTE);
     System.out.printf("[%d] Sair %n", SAIR);
     System.out.println("=====================================================");
@@ -83,7 +66,7 @@ public class Principal {
     
         case CADASTROCARTAO:
 
-            CadastroCartao.cadastrarCartao(entrada, usuarios, idsCadastrados);
+            CadastroCartao.cadastrarCartao(entrada, usuarios);
             break;
 
         case RECARREGARCARTAO:
@@ -91,12 +74,14 @@ public class Principal {
             RecargaCartao.recargaCartao(entrada, usuarios);
             break;
 
-        case BUSCARCARTAO:
+        case DADOSCARTAO:
 
+            BuscarCartao.buscarCartao(entrada, usuarios);
             break;
 
-        case BLOCKUNBLOCK:
+        case BLOQUEAROUDESBLOQUEAR:
 
+            BloquearOuDesbloquear.bloquearOuDesbloquear(entrada, usuarios);
             break;
 
         case UTILIZARTRANSPORTE:

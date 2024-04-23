@@ -1,11 +1,25 @@
+package entities;
+
 public class Usuario {
     
     private String nome;
     private String cpf;
     private String dataDeNascimento;
     private int quantidadeCartoes;
-    public Cartao[] cartoes = new Cartao[2] ;
+    private Cartao[] cartoes = new Cartao[2] ;
 
+    public Cartao getCartao(int index){
+        return cartoes[index];
+    }
+
+    public void setCartao(Cartao cartao, int index) {
+        this.cartoes[index] = cartao;
+    }
+
+    public int getNumerosCartoes(){
+       return cartoes.length;
+    }
+    
     public String getCpf() {
         return cpf;
     }
@@ -35,8 +49,6 @@ public class Usuario {
     }
 
     public void addQuantidade(){
-
         this.quantidadeCartoes++;
-
     }
 }
