@@ -88,7 +88,7 @@ public class Principal {
 
         case RECARREGARCARTAO:
 
-        
+            RecargaCartao.recargaCartao(entrada, usuarios);
             break;
 
         case BUSCARCARTAO:

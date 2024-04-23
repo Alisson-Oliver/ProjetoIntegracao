@@ -52,8 +52,12 @@ public class Cartao {
     public void recargaCartao(double valor){
 
         this.saldoNoCartao += valor;
+        System.out.println("==============================");
         System.out.println("Seu cartão foi recarregado!");
-        System.out.println("Saldo atual: " + saldoNoCartao);
+        System.out.printf("Saldo atual: R$ %.2f%n",saldoNoCartao);
+        System.out.println("==============================");
+       
+
 
     }
 

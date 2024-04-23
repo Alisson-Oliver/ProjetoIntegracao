@@ -98,7 +98,66 @@ public class CadastroCartao {
                     }
 
             
-                    else if(opcaoDigitada == 2){}
+                    else if(opcaoDigitada == 2){
+
+                        int cartaoExistente = verificarCartao(usuarios, i, "Bilhete Identificado");
+
+                        if(cartaoExistente == 0){
+                                                 
+                        //Chamar função para gerar o ID
+                        int idGerado = gerarID(idsCadastrados);
+
+                        int indexCartao = 0;
+                        for(int index = 0; index < 2; index++){
+
+                            if(usuarios.get(i).cartoes[index] == null){
+                                usuarios.get(i).cartoes[index] = new Cartao(idGerado, "Bilhete Identificado");
+                                usuarios.get(i).addQuantidade();
+                                indexCartao = index;
+                                break;
+                            }
+
+                        } 
+
+                
+                        LocalDate dataHojeISO = LocalDate.now();
+                        LocalTime horasISO = LocalTime.now(); 
+
+                        System.out.print("\033[H\033[2J");
+                        System.out.println("========== SEU CARTÃO FOI CRIADO! ==========");
+                        System.out.println("ID do cartão: " + idGerado);
+                        System.out.println("Nome do titular: " + usuarios.get(i).getNome());
+                        System.out.println("CPF do TItular: " + usuarios.get(i).getCpf());
+                        System.out.println("Data de nascimento: " + usuarios.get(i).getDataDeNascimento());
+                        System.out.println();
+                        System.out.println("Tipo do cartão: " + usuarios.get(i).cartoes[indexCartao].getTipoDoCartao());
+                        System.out.println("Cartão criado na data " + dataHojeISO.format(dataFormatada) + " às " + horasISO.format(horasFormatada));
+                        System.out.println("=============================================");
+                        System.out.println();
+                        System.out.println("Clique ENTER para continuar.");
+                        entrada.nextLine();
+                        entrada.nextLine();
+                        System.out.print("\033[H\033[2J");
+                        break;
+                    } else {
+
+                        System.out.print("\033[H\033[2J");
+                        System.out.println("Você já tem um cartão Bilhete Identificado");
+                        System.out.println();
+                        System.out.println("ID do cartão: " + cartaoExistente);
+                        System.out.println("Nome do titular: " + usuarios.get(i).getNome());
+                        System.out.println("CPF do TItular: " + usuarios.get(i).getCpf());
+                        System.out.println("Data de nascimento: " + usuarios.get(i).getDataDeNascimento());
+                        System.out.println();
+                        System.out.println("Clique ENTER para continuar.");
+                        entrada.nextLine();
+                        entrada.nextLine();
+
+                        break;
+                        }
+
+
+                    } 
             
                     else{
                         System.out.println("Erro! Digite uma opção válida.");
@@ -117,9 +176,12 @@ public class CadastroCartao {
                     System.out.println();
                     System.out.println("Tipo do cartão: " + usuarios.get(i).cartoes[0].getTipoDoCartao());
                     System.out.println("ID: "+ usuarios.get(i).cartoes[0].getId());
+                    System.out.printf("Saldo atual: R$%.2f %n",usuarios.get(i).cartoes[0].getSaldoNoCartao());
                     System.out.println();
                     System.out.println("Tipo do cartão: " + usuarios.get(i).cartoes[1].getTipoDoCartao());
                     System.out.println("ID: "+ usuarios.get(i).cartoes[1].getId());
+                    System.out.printf("Saldo atual: R$%.2f %n",usuarios.get(i).cartoes[1].getSaldoNoCartao());
+
                     System.out.println();
                     System.out.println("Clique ENTER para continuar.");
                     entrada.nextLine();
